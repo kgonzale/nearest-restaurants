@@ -10,8 +10,8 @@ interface IProps extends RouteComponentProps {
 const DefaultPage = (props: IProps) => { 
     const [value, setValue] = useState('');
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         props.history.push('/results');
     }
 
