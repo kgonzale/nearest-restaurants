@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { createBrowserHistory } from 'history';
+import { RouteComponentProps } from 'react-router-dom';
 
 
-const history = createBrowserHistory();
-const location = history.location;
+interface IProps extends RouteComponentProps {
+    onClick?: () => null;
+}
 
 
-const DefaultPage = (props: any) => { 
+const DefaultPage = (props: IProps) => { 
     const [value, setValue] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
