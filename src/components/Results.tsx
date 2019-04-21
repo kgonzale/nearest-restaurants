@@ -1,14 +1,18 @@
 import React from "react";
-import { RouteComponentProps } from 'react-router-dom'
 
-interface IProps extends RouteComponentProps {
+interface IProps {
+  history: any;
+  location: any;
+  match: any; 
 }
 
 const Results = (props: IProps) => {
   const params = new URLSearchParams(props.location.search)
-  const choice = params.get('choice')
+  const food_choice = params.get('choice')
+  const lat = params.get('lat')
+  const long = params.get('long')
 
-  return <p>{choice}</p>;
+  return <p>{`${long} + ${lat} + ${food_choice}`}</p>;
 };
 
 export default Results;

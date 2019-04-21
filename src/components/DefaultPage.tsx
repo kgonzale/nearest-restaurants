@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link, RouteComponentProps } from 'react-router-dom';
-import Results from './Results';
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-
+import React, { useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface IProps extends RouteComponentProps<{}> {
     onClick?: () => null;
 }
 
-
 const DefaultPage = (props: IProps) => { 
     const [value, setValue] = useState('');
+    const [long, setLongitude] = useState(0);
+    const [lat, setLatitude] = useState(0);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        props.history.push(`/results?choice=${value}`)
+        props.history.push(`/results?choice=${value}&long=${long}&lat=${lat}`)
+    }
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            geolocation(position.coords.latitude, position.coords.longitude);
+        });   
+    }, []);
+
+    const geolocation = (latitude: number, longitude: number) => {
+        setLongitude(longitude);
+        setLatitude(latitude);
     }
 
     return (
