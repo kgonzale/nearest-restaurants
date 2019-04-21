@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 
 
+const history = createBrowserHistory();
+const location = history.location;
 
-const axios = require('axios');
 
-
-const DefaultPage = () => { 
+const DefaultPage = (props: any) => { 
     const [value, setValue] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        props.history.push('/results');
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={e => setValue(e.target.value)} value={value} ></input>
-                <Router>
-                    <button>
-                        <Link to='/new/location/' type="submit">Click Me</Link>
-                    </button>
-                </Router>
+                <input type="submit" value="submit"></input>
 
             </form>  
         </div>
