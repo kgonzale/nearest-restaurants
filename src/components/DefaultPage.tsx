@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, RouteComponentProps } from 'react-router-dom';
+import Results from './Results';
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-interface IProps extends RouteComponentProps {
+
+interface IProps extends RouteComponentProps<{}> {
     onClick?: () => null;
 }
 
@@ -12,7 +15,7 @@ const DefaultPage = (props: IProps) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        props.history.push('/results');
+        props.history.push(`/results?choice=${value}`)
     }
 
     return (
@@ -20,8 +23,7 @@ const DefaultPage = (props: IProps) => {
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={e => setValue(e.target.value)} value={value} ></input>
                 <input type="submit" value="submit"></input>
-
-            </form>  
+            </form>   
         </div>
     )
 }
