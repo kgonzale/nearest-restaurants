@@ -45,7 +45,9 @@ const Results = (props: IProps) => {
     });    
    }
    res();
-  }, [])
+
+
+  }, [sortChoice])
 
   console.log(resp);
   
