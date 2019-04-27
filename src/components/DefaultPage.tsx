@@ -28,20 +28,27 @@ const DefaultPage = (props: IProps) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} id="defaultform">
-        <input
-          type="text"
-          onChange={e => setValue(e.target.value)}
-          value={value}
-        />
-        {/* <input type="submit" value="submit" /> */}
-        <button
-          type="submit"
-          value="submit"
-          className=" bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
-        >
-          submit
-        </button>
+      <form
+        onSubmit={handleSubmit}
+        id="defaultform"
+        className="w-full max-w-sm"
+      >
+        <div className="flex items-center border-b border-b-2 border-teal py-2">
+          <input
+            className="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none"
+            type="text"
+            placeholder="Restaurant/Fast Food Choice"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+          />
+          <button
+            type="submit"
+            value="submit"
+            className="flex-no-shrink bg-teal hover:bg-teal-dark border-teal hover:border-teal-dark text-sm border-4 text-white py-1 px-2 rounded"
+          >
+            submit
+          </button>
+        </div>
       </form>
     </div>
   );
