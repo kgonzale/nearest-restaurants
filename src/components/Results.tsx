@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 
 const axios = require("axios");
 
+type RestaurantResults = {
+  results_found ?: number;
+  results_start ?: number;
+  results_shown ?: number;
+  restaurants ?: [];
+}
+
 interface IProps {
   history: any;
   location: any;
@@ -17,7 +24,7 @@ interface IResponse {
 }
 
 const Results = (props: IProps) => {
-  const [resp, setResp] = useState(null);
+  const [resp, setResp] = useState<RestaurantResults>({});
   const [sortChoice, setSortChoice] = useState(0);
 
   const params = new URLSearchParams(props.location.search);
@@ -54,13 +61,21 @@ const Results = (props: IProps) => {
 
   console.log(resp);
 
+  let apiResponse = Object.values(resp)[3]
+  console.log(apiResponse)
+
   return (
     <div>
       <p>{`${lon} + ${lat} + ${food_choice} `}</p>
 
+
       <button onClick={() => setSortChoice(1)} />
       <button onClick={() => setSortChoice(2)} />
       <button onClick={() => setSortChoice(3)} />
+
+      {/* {apiResponse.map(i => {
+        
+      })} */}
 
       <div className="max-w-md w-full lg:flex">
         <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" />
