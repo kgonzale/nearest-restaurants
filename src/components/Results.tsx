@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 
 const axios = require("axios");
 
+interface Restaurant {
+  restaurant : any;
+}
+
+
 type RestaurantResults = {
   results_found ?: number;
   results_start ?: number;
   results_shown ?: number;
-  restaurants ?: [];
+  restaurants : Restaurant[];
 }
 
 interface IProps {
@@ -24,7 +29,7 @@ interface IResponse {
 }
 
 const Results = (props: IProps) => {
-  const [resp, setResp] = useState<RestaurantResults>({});
+  const [resp, setResp] = useState<RestaurantResults>({ restaurants: [] });
   const [sortChoice, setSortChoice] = useState(0);
 
   const params = new URLSearchParams(props.location.search);
@@ -59,39 +64,44 @@ const Results = (props: IProps) => {
     res();
   }, [sortChoice]);
 
-  console.log(resp);
+  // console.log(resp);
 
-  let apiResponse = Object.values(resp)[3]
+  // let apiResponse = Object.values(resp)[3]
+  // console.log(apiResponse)
+
+  const apiResponse = resp.restaurants || [];
   console.log(apiResponse)
+
+  
 
   return (
     <div>
-      <p>{`${lon} + ${lat} + ${food_choice} `}</p>
+      <button className="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" onClick={() => setSortChoice(1)} />
+      <button className="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" onClick={() => setSortChoice(2)} />
+      <button className="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" onClick={() => setSortChoice(3)} />
 
-
-      <button onClick={() => setSortChoice(1)} />
-      <button onClick={() => setSortChoice(2)} />
-      <button onClick={() => setSortChoice(3)} />
-
-      {/* {apiResponse.map(i => {
-        
-      })} */}
-
-      <div className="max-w-md w-full lg:flex">
-        <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" />
-        <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-          <div className="mb-8">
-            <div className="text-black font-bold text-xl mb-2">
-              Can coffee make you a better developer?
-            </div>
-            <p className="text-grey-darker text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatibus quia, nulla! Maiores et perferendis eaque,
-              exercitationem praesentium nihil.
-            </p>
+      {apiResponse.map(i => {
+      return (<div className="max-w-sm rounded overflow-hidden shadow-sm lg:flex">
+      <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" >
+          <img src={'https://tailwindcss.com/img/card-left.jpg'} />
+      </div>
+      <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div className="mb-8">
+          <div className="text-black font-bold text-xl mb-2">
+            {i.restaurant.name}
           </div>
+          <p className="text-grey-darker text-base">
+           Average cost for two: {i.restaurant.average_cost_for_two}
+          </p>
+          <p className="text-grey-darker text-base">
+           User Rating: {i.restaurant.user_rating.aggregate_rating}
+          </p>
         </div>
       </div>
+    </div>)
+      })}
+
+      
     </div>
   );
 };
