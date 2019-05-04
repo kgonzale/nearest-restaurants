@@ -72,6 +72,7 @@ const Results = (props: IProps) => {
   const apiResponse = resp.restaurants || [];
   console.log(apiResponse)
 
+
   
 
   return (
@@ -80,11 +81,14 @@ const Results = (props: IProps) => {
       <button className="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" onClick={() => setSortChoice(2)} />
       <button className="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" onClick={() => setSortChoice(3)} />
 
-      {apiResponse.map(i => {
-      return (<div className="max-w-sm rounded overflow-hidden shadow-sm lg:flex">
-      <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" >
+      {apiResponse && apiResponse.map(i => {
+
+        //border-top: 4px solid rgb(55, 188, 155);
+
+      return (<div className="max-w-sm rounded overflow-hidden shadow-lg custom-border ">
+      {/* <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" >
           <img src={'https://tailwindcss.com/img/card-left.jpg'} />
-      </div>
+      </div> */}
       <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div className="mb-8">
           <div className="text-black font-bold text-xl mb-2">
