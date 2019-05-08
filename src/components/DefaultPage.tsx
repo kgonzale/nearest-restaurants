@@ -31,7 +31,7 @@ const DefaultPage = (props: IProps) => {
       <form
         onSubmit={handleSubmit}
         id="defaultform"
-        className="w-full max-w-sm"
+        className=" container mx-auto w-full max-w-sm"
       >
         <div className="flex items-center border-b border-b-2 border-teal py-2">
           <input

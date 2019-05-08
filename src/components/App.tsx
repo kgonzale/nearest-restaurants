@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import DefaultPage from './DefaultPage';
-import Results from './Results';
+import DefaultPage from "./DefaultPage";
+import Results from "./Results";
 
 const App = () => {
-
-    return (
-    <Router>
-        <Route exact path="/" component={DefaultPage}/>
+  return (
+    <div className="container mx-auto px-4 ">
+      <Router>
+        <Route exact path="/" component={DefaultPage} />
         <Route exact path="/results" component={Results} />
-    </Router>
-    );
-    
-}
+      </Router>
+    </div>
+  );
+};
 
 export default App;
