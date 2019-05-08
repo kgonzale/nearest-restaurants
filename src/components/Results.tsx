@@ -74,29 +74,28 @@ const Results = (props: IProps) => {
         <Loading />
       ) : (
         <div>
-          <div className="container mx-auto">
-          <button
-            className="bg-red-lighter hover:bg-red-light active:bg-red-dark text-white py-2 px-4 rounded-l"
-            onClick={() => setSortChoice(1)}
-          >
-            Cost
-          </button>
+          <div className="flex justify-center flex-wrap">
+            <button
+              className="bg-red-lighter hover:bg-red-light active:bg-red-dark text-white py-2 px-4 rounded-l"
+              onClick={() => setSortChoice(1)}
+            >
+              Cost
+            </button>
 
-          <button
-            className="bg-red-lighter hover:bg-red-light text-white py-2 px-4"
-            onClick={() => setSortChoice(2)}
-          >
-            Rating
-          </button>
+            <button
+              className="bg-red-lighter hover:bg-red-light text-white py-2 px-4"
+              onClick={() => setSortChoice(2)}
+            >
+              Rating
+            </button>
 
-          <button
-            className="bg-red-lighter hover:bg-red-light text-white py-2 px-4 rounded-r"
-            onClick={() => setSortChoice(3)}
-          >
-            Distance
-          </button>
+            <button
+              className="bg-red-lighter hover:bg-red-light text-white py-2 px-4 rounded-r"
+              onClick={() => setSortChoice(3)}
+            >
+              Distance
+            </button>
           </div>
-          
 
           {apiResponse.map(i => {
             return (
