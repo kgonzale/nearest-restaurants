@@ -31,13 +31,13 @@ const DefaultPage = (props: IProps) => {
       <form
         onSubmit={handleSubmit}
         id="defaultform"
-        className=" container mx-auto w-full max-w-sm"
+        className="flex h-64 items-center justify-center container mx-auto w-full max-w-sm"
       >
         <div className="flex items-center border-b border-b-2 border-teal py-2">
           <input
             className="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
-            placeholder="Restaurant/Fast Food Choice"
+            placeholder="What are you feeling?"
             onChange={e => setValue(e.target.value)}
             value={value}
           />
