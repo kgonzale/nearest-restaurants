@@ -74,8 +74,12 @@ const Results = (props: IProps) => {
         <Loading />
       ) : (
         <div>
-          <div className="flex justify-center flex-wrap">
+          <div className="flex justify-center flex-wrap mt-4">
+            <h1 className="pr-4" style={{ fontSize: "1.4rem" }}>
+              Sort by:
+            </h1>
             <button
+              style={{ fontSize: "1.2rem" }}
               className="bg-red-lighter hover:bg-red-light active:bg-red-dark text-white py-2 px-4 rounded-l"
               onClick={() => setSortChoice(1)}
             >
@@ -83,6 +87,7 @@ const Results = (props: IProps) => {
             </button>
 
             <button
+              style={{ fontSize: "1.2rem" }}
               className="bg-red-lighter hover:bg-red-light text-white py-2 px-4"
               onClick={() => setSortChoice(2)}
             >
@@ -90,6 +95,7 @@ const Results = (props: IProps) => {
             </button>
 
             <button
+              style={{ fontSize: "1.2rem" }}
               className="bg-red-lighter hover:bg-red-light text-white py-2 px-4 rounded-r"
               onClick={() => setSortChoice(3)}
             >
@@ -98,8 +104,16 @@ const Results = (props: IProps) => {
           </div>
 
           {apiResponse.map(i => {
+
+            let colors = ['red', 'blue', 'yellow', 'grey', 'orange', 'green', 'teal', 'indigo', 'purple', 'pink']
+            let color = colors[Math.floor(Math.random()*colors.length)]
+
+            const styles = {
+              borderTop: `4px solid ${color}`
+            };
+
             return (
-              <div className="max-w-sm rounded overflow-hidden shadow-lg custom-border container mx-auto ">
+              <div style={styles} className="max-w-sm rounded overflow-hidden shadow-lg container mx-auto m-8">
                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                   <div className="mb-8">
                     <div className="text-black font-bold text-xl mb-2">
@@ -110,6 +124,18 @@ const Results = (props: IProps) => {
                     </p>
                     <p className="text-grey-darker text-base">
                       User Rating: {i.restaurant.user_rating.aggregate_rating}
+                    </p>
+                    <p className="text-grey-darker text-base">
+                      User Votes: {i.restaurant.user_rating.votes}
+                    </p>
+                    <p className="text-grey-darker text-base">
+                      Address: {i.restaurant.location.address}
+                    </p>
+                    <p className="text-grey-darker text-base">
+                      <a style={{ textDecoration: 'none'}} href={i.restaurant.photos_url}>Pictures</a>
+                    </p>
+                    <p  className="text-grey-darker text-base">
+                      <a style={{ textDecoration: 'none'}} href={i.restaurant.menu_url}>Menu</a>
                     </p>
                   </div>
                 </div>
