@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import foodPic from "../images/food.jpg";
 
 interface IProps extends RouteComponentProps<{}> {
   onClick?: () => null;
@@ -26,16 +27,28 @@ const DefaultPage = (props: IProps) => {
     setLatitude(latitude);
   };
 
+  const sectionStyle: React.CSSProperties = {
+    backgroundImage: `url(${foodPic})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0
+  };
+
   return (
-    <div>
+    <div style={sectionStyle}>
       <form
         onSubmit={handleSubmit}
         id="defaultform"
-        className="flex h-64 items-center justify-center container mx-auto w-full max-w-sm"
+        className="flex h-full items-center justify-center container mx-auto w-full max-w-sm"
       >
         <div className="flex items-center border-b border-b-2 border-teal py-2">
           <input
-            className="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none"
+            className="appearance-none bg-transparent border-none w-full text-black mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
             placeholder="What are you feeling?"
             onChange={e => setValue(e.target.value)}

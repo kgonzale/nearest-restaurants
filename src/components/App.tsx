@@ -5,7 +5,7 @@ import Results from "./Results";
 
 const App = () => {
   return (
-    <div className="container mx-auto px-4">
+    <div>
       <Router>
         <Route exact path="/" component={DefaultPage} />
         <Route exact path="/results" component={Results} />
