@@ -46,7 +46,7 @@ const DefaultPage = (props: IProps) => {
         id="defaultform"
         className="flex h-full items-center justify-center container mx-auto w-full max-w-sm"
       >
-        <div className="flex items-center border-b border-b-2 border-teal py-2">
+        <div className="flex container mx-auto  items-center border-b border-b-2 border-teal py-2">
           <input
             className="appearance-none bg-transparent border-none w-full text-black mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
