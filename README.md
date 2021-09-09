@@ -1,4 +1,4 @@
-# Display the closest restaurant/fast food  
+# Nearest Restaurants 🍔
 
 * React
 * React Hooks
